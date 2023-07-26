@@ -1,12 +1,28 @@
-const Navbar = () => {
+import Link from "next/link";
+
+import Container from "@/components/ui/container";
+import MainNav from "@/components/main-nav";
+import getCategories from "@/actions/get-categories";
+import NavbarActions from "@/components/navbar-actions";
+
+export const revalidate = 0;
+
+const Navbar = async () => {
+  const categories = await getCategories();
+
   return (
-    <nav className="bg-white border-t">
-      <div className="mx-auto py-10">
-        <p className="text-center text-xs text-black">
-          &copy; 2023 Guitar Gear Shop Ltd. All Rights Reserved.
-        </p>
-      </div>
-    </nav>
+    <div className="border-b">
+      <Container>
+        <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
+          <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
+            <p className="font-bold text-xl">Guitar Gear Shop</p>
+          </Link>
+          <MainNav data={categories} />
+          <NavbarActions />
+        </div>
+      </Container>
+    </div>
   );
 };
+
 export default Navbar;
