@@ -3,14 +3,17 @@
 import Image from "next/image";
 import { Tab } from "@headlessui/react";
 
-import { Image as ImageType } from "@/types";
+import { Product } from "@/types";
 import GalleryTab from "./gallery-tab";
 
 interface GallleryProps {
-  images: ImageType[];
+  product: Product[];
 }
 
-const Gallery: React.FC<GallleryProps> = ({ images }) => {
+const Gallery: React.FC<GallleryProps> = ({ product }) => {
+  const [productData] = product;
+  const { images } = productData;
+
   return (
     <Tab.Group as="div" className="flex flex-col-reverse">
       <div className="mx-auto mt-6 hiddem w-full max-w-2xl sm:block lg:max-w-none">
