@@ -29,7 +29,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   });
 
   const sizes = await getSizes();
-  const color = await getColors();
+  const colors = await getColors();
   const category = await getCategory(params.categoryId);
 
   return (
@@ -40,6 +40,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             <div className="hidde lg:block">
               <Filter valueKey="sizeId" name="Sizes" data={sizes} />
+              <Filter valueKey="colorId" name="Colors" data={colors} />
             </div>
           </div>
         </div>
