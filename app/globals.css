@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Radial Class for Billboard */
+
+@layer utilities {
+  .bg-radial {
+    background: radial-gradient(
+      331.69% 285% at 50% 0%,
+      #fff 17.11%,
+      rgba(255, 255, 255, 0) 67.98%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Shad CN */
+
 @layer base {
   :root {
     --background: 0 0% 100%;
