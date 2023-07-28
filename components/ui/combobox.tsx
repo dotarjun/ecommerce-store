@@ -47,7 +47,7 @@ interface ComboboxProps {
   data: Category[];
 }
 
-export const Combobox: React.FC<ComboboxProps> = ({ data, routes }) => {
+export const Combobox: React.FC<ComboboxProps> = ({ data }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const router = useRouter();
@@ -75,7 +75,7 @@ export const Combobox: React.FC<ComboboxProps> = ({ data, routes }) => {
               <CommandItem
                 key={category.name}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
+                  setValue(currentValue === value ? "" : category.name);
                   setOpen(false);
                   router.push(`/category/${category.id}`);
                 }}>
