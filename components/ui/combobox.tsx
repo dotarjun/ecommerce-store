@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/shad-button";
@@ -46,9 +47,10 @@ interface ComboboxProps {
   data: Category[];
 }
 
-export const Combobox: React.FC<ComboboxProps> = ({ data }) => {
+export const Combobox: React.FC<ComboboxProps> = ({ data, routes }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+  const router = useRouter();
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -57,17 +59,17 @@ export const Combobox: React.FC<ComboboxProps> = ({ data }) => {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between">
+          className="w-full justify-between">
           {value
             ? data.find((category: Category) => category.name === value)?.name
-            : "Select Category..."}
+            : "Category"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-full p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder="Search Category..." />
+          <CommandEmpty>No Category found.</CommandEmpty>
           <CommandGroup>
             {data.map((category: Category) => (
               <CommandItem
@@ -75,7 +77,17 @@ export const Combobox: React.FC<ComboboxProps> = ({ data }) => {
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue);
                   setOpen(false);
+                  router.push(`/category/${category.id}`);
                 }}>
+                {/* <Link
+          href={route.href}
+          key={route.href}
+          className={cn(
+            "text-sm font-medium transition-colors hover:text-black",
+            route.active ? "text-black" : "text-neutral-500"
+          )}>
+          {route.label}
+        </Link> */}
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
