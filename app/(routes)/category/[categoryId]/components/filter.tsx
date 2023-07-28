@@ -4,8 +4,8 @@ import qs from "query-string";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Color, Size } from "@/types";
-import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import CustomButton from "@/components/ui/headless-button";
 
 interface FilterProps {
   valueKey: string;
@@ -53,14 +53,14 @@ const Filter: React.FC<FilterProps> = ({ valueKey, name, data }) => {
       <div className="flex flex-wrap gap-2">
         {data.map((filter) => (
           <div key={filter.id} className="flex items-center">
-            <Button
+            <CustomButton
               className={cn(
                 "rounded-md text-sm text-gray-800 p-2 bg-white border border-gray-300",
                 selectedValue === filter.id && "bg-black text-white"
               )}
               onClick={() => onClick(filter.id)}>
               {filter.name}
-            </Button>
+            </CustomButton>
           </div>
         ))}
       </div>

@@ -5,7 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 
-import Button from "@/components/ui/button";
+import CustomButton from "@/components/ui/headless-button";
 import Currency from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 
@@ -49,12 +49,12 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button
+      <CustomButton
         disabled={items.length === 0}
         onClick={onCheckout}
         className="w-full mt-6">
         Checkout
-      </Button>
+      </CustomButton>
     </div>
   );
 };

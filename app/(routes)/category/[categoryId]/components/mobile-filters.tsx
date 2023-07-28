@@ -5,7 +5,7 @@ import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
 
 import { Color, Size } from "@/types";
-import Button from "@/components/ui/button";
+import CustomButton from "@/components/ui/headless-button";
 import IconButton from "@/components/ui/icon-button";
 
 import Filter from "./filter";
@@ -23,10 +23,12 @@ const MobileFilters: React.FC<MobileFilterProps> = ({ sizes, colors }) => {
 
   return (
     <>
-      <Button onClick={onOpen} className="flex items-center gap-x-2 lg:hidden">
+      <CustomButton
+        onClick={onOpen}
+        className="flex items-center gap-x-2 lg:hidden">
         Filters
         <Plus size={20} />
-      </Button>
+      </CustomButton>
       <Dialog
         open={open}
         onClose={onClose}
