@@ -18,11 +18,10 @@ const Navbar = async () => {
           <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
             <p className="font-bold text-xl">Guitar Gear Shop</p>
           </Link>
-          <div className="hidden md:block">
-            <MainNav data={categories} />
+          <div className="ml-auto flex items-center">
+            <MobileNav data={categories} />
+            <NavbarActions />
           </div>
-          <NavbarActions />
-          <MobileNav data={categories} />
         </div>
       </Container>
     </div>
