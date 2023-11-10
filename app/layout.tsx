@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Guitar Gear Shop",
-    description: "Buy the best guitars online",
+    description:
+      "GGS is the best place to buy acoustic, electric, and bass guitars online. We carry all major brands and free shipping is available.",
     url: "https://guitargear.shop",
     type: "website",
   },
